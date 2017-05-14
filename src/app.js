@@ -1,5 +1,4 @@
 var riot = require('riot')
-require('./tags/sample.tag')
-import axios from 'axios'
+require('./tags/app.tag')
 
-document.addEventListener('DOMContentLoaded', () => riot.mount('sample'))
+document.addEventListener('DOMContentLoaded', () => riot.mount('app'))

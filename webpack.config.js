@@ -39,11 +39,6 @@ var config = {
         use: [{
           loader: 'tag-loader'
         }]
-      },
-      {
-        exclude: /node_modules/,
-        test: /\.scss$/,
-        loaders: ["style", "css?modules&importLoaders=2", "sass", "bulma"]
       }
     ]
   },
