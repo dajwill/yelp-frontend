@@ -19,7 +19,6 @@ const initState = () => {
 }
 
 const reducer = (state, action) => {
-  console.log('');
   switch(action.type) {
     case 'UPDATE_SEARCH':
       return {

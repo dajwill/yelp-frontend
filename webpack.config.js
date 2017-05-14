@@ -42,7 +42,7 @@ var config = {
       },
       {
         exclude: /node_modules/,
-        test: /\.sass/,
+        test: /\.scss$/,
         loaders: ["style", "css?modules&importLoaders=2", "sass", "bulma"]
       }
     ]
