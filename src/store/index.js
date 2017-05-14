@@ -11,7 +11,7 @@ const initState = () => {
   return {
     search: {
       filter: 'all',
-      query: '',
+      query: 'food',
     },
     listings: [],
     favorites: []
@@ -19,6 +19,7 @@ const initState = () => {
 }
 
 const reducer = (state, action) => {
+  console.log('');
   switch(action.type) {
     case 'UPDATE_SEARCH':
       return {
@@ -30,22 +31,35 @@ const reducer = (state, action) => {
   }
 }
 
-const store$ = new Subject()
+const store$ = action$
   .startWith(initState())
   .scan(reducer);
 
-const actionDispatcher = (func) => (...args) =>
-  action$.next(func(...args));
+const actionDispatcher = (func) => (...args) => {
+  return action$.next(func(...args))
+}
+
+// const actionDispatcher = (func) => console.log(func)
 
 const newSearch = actionDispatcher((payload) => ({
   type: 'UPDATE_SEARCH',
   payload
 }));
 
+// const newSearch = actionDispatcher((payload) => {
+//   console.log('yeee');
+//   return {
+//     type: 'UPDATE_SEARCH',
+//     payload
+//   }
+// });
+
+// const newSearch = () => console.log('yeee')
+
 const fetchMusic = actionDispatcher((payload) => {
   return {
     type: 'FETCHING_RESULTS',
-    payload: Observable.fromPromise(axios.get(`https://api.yelp.com/v3/businesses/search?location=48103`))
+    payload: Observable.fromPromise(axios.get(`https://localhost:8081/search`))
   }
 })
 
