@@ -11,6 +11,9 @@
     <div class="panel-block" each={option in panelOptions} onclick="{updateSearch('filter', option)}">
       <h1>{option}</h1>
     </div>
+
+    <h1>Results</h1>
+    <li each={listings}>{this.name}</li>
   </nav>
 
   <script type="text/javascript">
@@ -39,7 +42,7 @@
     }
 
     store$.subscribe((state) => {
-      console.log(state);
+      console.log('state', state);
       this.update(state)
     })
   </script>

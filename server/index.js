@@ -10,8 +10,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  console.log('yee');
-  axios.get(`https://api.yelp.com/v3/businesses/search?location=48103`,
+  let { filter, query } = req.query
+  axios.get(`https://api.yelp.com/v3/businesses/search?location=48103&term=${query}&category=${filter}`,
     {
       headers: {
         Authorization: 'Bearer eGuwe0MktbhJHGhC9kOFgU3mC216qfQiIal1yJLIiCvQ0EbYYPRHiqQiW0qTdLqp3yY6hfpezmzGCfstpYHj673diAToRut3tVyUSfNN0-1QOYxA4qg8rLXpuLwPWXYx'
@@ -19,10 +19,7 @@ app.get('/search', (req, res) => {
     }
   )
     .then((data) => {
-      // console.log('data', data);
-      // return res.send('hello')
       var businesses = data.data.businesses
-      console.log(businesses);
       return res.send(businesses)
     })
     .catch((err) => res.send(new Error(err)))
