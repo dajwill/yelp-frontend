@@ -4,7 +4,7 @@
       <p class="control has-icons-left">
         <input class="input is-large" type="text" placeholder="Search" onkeyup={submit} onclick="{submit}">
         <span class="icon is-small is-left">
-          <i class="fa fa-search"></i>
+          <i class="fa fa-search" style="color:#E4BA8E;font-size:1.5rem;"></i>
         </span>
       </p>
     </div>
@@ -12,25 +12,42 @@
       <h1>{option.label}</h1>
     </div>
 
-    <h1 class="red">Results</h1>
-
     <div each={opts.listings}>
-      <div class="card">
+      <div class="card item">
         <div class="card-image">
           <figure class="image is-3by2">
             <img src="{this.image_url}" alt="Image">
+            <div class="favorite is-overlay is-pulled-right">
+              <span class="is-pulled-right">
+                <i class="fa fa-heart-o" style="color: white;font-size:2rem;padding:10px;" aria-hidden="true"></i>
+              </span>
+            </div>
           </figure>
         </div>
-        <div class="content">
-          {this.name}
+        <div class="card-content" style="font-size:1rem;">
+          <div class="columns is-mobile">
+            <div class="column is-half business-name">
+              {this.name}
+            </div>
+            <div class="column">
+              <rating score="{this.rating}" />
+            </div>
+            <div class="column">
+              {miles(this.distance)}
+            </div>
+          </div>
+          <div class="columns is-mobile">
+            <div class="column">
+              {this.categories[0].title}
+            </div>
+            <div class="column">
+              <span if={!this.is_closed}>Open Now</span>
+            </div>
+            <div class="column">
+              {this.price}
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="rating rating-{score}">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
       </div>
 
     </div>
@@ -64,18 +81,23 @@
         newSearch(this.search)
       }
     }
+
+    this.miles = (meters) => {
+      let miles = meters*0.000621371192;
+      return Math.round( miles * 10 ) / 10
+    }
   </script>
 
   <style scoped>
-  .red { color: yellow !important; }
-  .dot {
-    height: 15px;
-    width: 15px;
-    background-color: grey;
-    border-radius: 100%;
-    margin: 2px;
-  }
+    .red { color: yellow !important; }
+    .dot {
+      height: 15px;
+      width: 15px;
+      background-color: grey;
+      border-radius: 100%;
+      margin: 2px;
+    }
 
-  .rating { display: block; }
+    .rating { display: block; }
   </style>
 </home>
