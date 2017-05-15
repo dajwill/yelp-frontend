@@ -34,14 +34,15 @@ const reducer = (state, action) => {
         listings: action.payload
       }
     case 'UPDATE_FAVORITE':
-      if (state.favorites.includes(action.payload)) {
-        let index = state.favorites.indexOf(action.payload)
-        state.favorites.splice(index, 1)
-        var newFaves = state.favorites
-      } else {
-        var newFaves = state.favorites.concat(action.payload)
-      }
-
+      // if (state.favorites.includes(action.payload)) {
+      //   let index = state.favorites.indexOf(action.payload)
+      //   state.favorites.splice(index, 1)
+      //   var newFaves = state.favorites
+      // } else {
+      //   var newFaves = state.favorites.concat(action.payload)
+      // }
+      if (state.favorites.length) var newFaves = [ action.payload ]
+      else var newFaves = state.favorites.map(f => f === action.payload ? null : f)
       return {
         ...state,
         favorites: newFaves

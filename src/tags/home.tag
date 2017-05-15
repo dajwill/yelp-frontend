@@ -1,5 +1,5 @@
 <home>
-  <nav class="panel">
+  <nav class="panel" style="position:fixed;background-color:white;z-index:10;margin-top:-10px;width:100vw;">
     <div class="panel-block">
       <p class="control has-icons-left">
         <input class="input is-large" type="text" placeholder="Search" onkeyup={submit} onclick="{submit}">
@@ -12,11 +12,13 @@
       <h1>{option.label}</h1>
     </div>
 
+  </nav>
+  <div class="list" style="z-index:-10;padding-top:250px;">
     <div each={opts.listings}>
       <div class="card item">
         <div class="card-image">
           <figure class="image is-3by2">
-            <img src="{this.image_url}" alt="Image">
+            <img src="{this.image_url}" alt="Image" />
             <div class="favorite is-overlay is-pulled-right">
               <span class="is-pulled-right">
                 <i class="fa fa-heart-o" style="color: white;font-size:2rem;padding:10px;" aria-hidden="true" data-id="{this.id}" onclick="{handleLike}"></i>
@@ -49,9 +51,19 @@
           </div>
         </div>
       </div>
-
     </div>
-  </nav>
+  </div>
+
+    <div class="panel" style="position:fixed;bottom:0;background-color:white;z-index:10;width:100vw;">
+      <div class="panel-tabs" style="justify-content:space-around;">
+        <a class="is-active">
+          <i class="fa fa-search" style="color:#E4BA8E;font-size:1.5rem;"></i>
+        </a>
+        <a><i class="fa fa-compass" style="color:#E4BA8E;font-size:1.5rem;"></i></a>
+        <a><i class="fa fa-heart-o" style="color:#E4BA8E;font-size:1.5rem;"></i></a>
+        <a><i class="fa fa-user-o" style="color:#E4BA8E;font-size:1.5rem;"></i></a>
+      </div>
+    </div>
 
   <script type="text/javascript">
     import { newSearch, updateLikes } from '../store'
