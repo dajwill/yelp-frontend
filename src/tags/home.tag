@@ -19,7 +19,7 @@
             <img src="{this.image_url}" alt="Image">
             <div class="favorite is-overlay is-pulled-right">
               <span class="is-pulled-right">
-                <i class="fa fa-heart-o" style="color: white;font-size:2rem;padding:10px;" aria-hidden="true"></i>
+                <i class="fa fa-heart-o" style="color: white;font-size:2rem;padding:10px;" aria-hidden="true" data-id="{this.id}" onclick="{handleLike}"></i>
               </span>
             </div>
           </figure>
@@ -54,7 +54,7 @@
   </nav>
 
   <script type="text/javascript">
-    import { newSearch } from '../store'
+    import { newSearch, updateLikes } from '../store'
     require('./rating.tag')
     console.log(this);
     this.search = this.opts.search
@@ -81,6 +81,8 @@
         newSearch(this.search)
       }
     }
+
+    this.handleLike = (e) => updateLikes(e.item.id)
 
     this.miles = (meters) => {
       let miles = meters*0.000621371192;

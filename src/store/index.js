@@ -33,6 +33,19 @@ const reducer = (state, action) => {
         ...state,
         listings: action.payload
       }
+    case 'UPDATE_FAVORITE':
+      if (state.favorites.includes(action.payload)) {
+        let index = state.favorites.indexOf(action.payload)
+        state.favorites.splice(index, 1)
+        var newFaves = state.favorites
+      } else {
+        var newFaves = state.favorites.concat(action.payload)
+      }
+
+      return {
+        ...state,
+        favorites: newFaves
+      }
     case 'ERROR':
       return {
         ...state,
@@ -82,7 +95,13 @@ const newSearch = actionCreator((payload) => {
     .startWith({ type: 'FETCHING_RESULTS', payload: payload })
 });
 
+const updateLikes = actionDispatcher((payload) => ({
+  type: 'UPDATE_FAVORITE',
+  payload
+}))
+
 export {
   store$,
-  newSearch
+  newSearch,
+  updateLikes
 }
