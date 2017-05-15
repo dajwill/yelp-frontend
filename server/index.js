@@ -11,14 +11,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  let { filter, query } = req.query
-  axios.get(`https://api.yelp.com/v3/businesses/search?location=48103&term=${query}&category=${filter}`,
-    {
-      headers: {
-        Authorization: yelp_auth
-      }
-    }
-  )
+  // let { filter, query } = req.query
+  let filter = req.query.filter || ''
+  let query = req.query.query || ''
+  let url = `https://api.yelp.com/v3/businesses/search`
+  let headers = {
+    Authorization: yelp_auth
+  }
+  let params = {
+    location: 48103,
+    term: query,
+    categories: filter
+  }
+
+  axios.get(url, {params: params, headers: headers})
     .then((data) => {
       var businesses = data.data.businesses
       return res.send(businesses)

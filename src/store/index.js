@@ -31,6 +31,7 @@ const reducer = (state, action) => {
     case 'RESULTS_LOADED':
       return {
         ...state,
+        loading: false,
         listings: action.payload
       }
     case 'UPDATE_FAVORITE':
@@ -41,7 +42,7 @@ const reducer = (state, action) => {
       // } else {
       //   var newFaves = state.favorites.concat(action.payload)
       // }
-      if (state.favorites.length) var newFaves = [ action.payload ]
+      if (!state.favorites.length) var newFaves = [ action.payload ]
       else var newFaves = state.favorites.map(f => f === action.payload ? null : f)
       return {
         ...state,

@@ -35,7 +35,7 @@
               <rating score="{this.rating}" />
             </div>
             <div class="column">
-              {miles(this.distance)}
+              {miles(this.distance)} mi
             </div>
           </div>
           <div class="columns is-mobile">
@@ -73,9 +73,9 @@
     this.listings = this.opts.listings
 
     this.panelOptions = [
-      { label: 'Restaurants', value: 'restaurant' },
+      { label: 'Restaurants', value: 'restaurants' },
       { label: 'Bars', value: 'bars' },
-      { label: 'Coffee Shops', value: 'coffeeshop' }
+      { label: 'Coffee Shops', value: 'coffee' }
     ]
 
     this.updateFilter = (value) => {
@@ -98,7 +98,7 @@
 
     this.miles = (meters) => {
       let miles = meters*0.000621371192;
-      return Math.round( miles * 10 ) / 10
+      return Math.round( miles * 100 ) / 100
     }
   </script>
 
