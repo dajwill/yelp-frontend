@@ -2,7 +2,7 @@
   <nav class="panel" style="position:fixed;background-color:white;z-index:10;margin-top:-10px;width:100vw;">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-large" type="text" placeholder="Search" onkeyup={submit} onclick="{submit}">
+        <input class="input is-large" type="text" placeholder="Search" onkeyup={submit} onchange={updateSearch} value="{search.query}">
         <span class="icon is-small is-left">
           <i class="fa fa-search" style="color:#E4BA8E;font-size:1.5rem;"></i>
         </span>
@@ -85,6 +85,11 @@
         newSearch(this.opts.search)
         this.update()
       }
+    }
+
+    this.updateSearch = (e) => {
+      this.search.query = e.target.value
+      this.update()
     }
 
     this.submit = (e) => {

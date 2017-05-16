@@ -12,8 +12,8 @@ const action$ = new Subject();
 const initState = () => {
   return {
     search: {
-      filter: 'all',
-      query: 'food',
+      filter: '',
+      query: '',
     },
     listings: [],
     favorites: []
