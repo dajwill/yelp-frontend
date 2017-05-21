@@ -34,9 +34,6 @@ module.exports = {
   },
 
   plugins: [
-    new BabelEnginePlugin({
-      presets: ['env']
-    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
