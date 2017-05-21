@@ -1,8 +1,16 @@
 <app>
-  <home search={search} listings={listings} />
+  <div class="spinner" if={loading}>
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+  <home if={view == 'home'} search={search} listings={listings} favorites={favorites} />
+  <business if={view == 'business'} business={selected}/>
+  <footer />
 
   <script type="text/javascript">
     require('./home.tag')
+    require('./business.tag')
+    require('./footer.tag')
     import { store$, newSearch } from '../store'
 
     this.panelOptions = [

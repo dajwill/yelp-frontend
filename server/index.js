@@ -5,12 +5,17 @@ const yelp_auth = require('../keys.json').yelp;
 var app = express()
 
 app.use(cors())
+app.enable('trust proxy')
 
 app.get('/', (req, res) => {
   return res.send('Hello')
 })
 
 app.get('/search', (req, res) => {
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  console.log(req.ip);
+  console.log(req.ips);
+  console.log(ip);
   // let { filter, query } = req.query
   let filter = req.query.filter || ''
   let query = req.query.query || ''

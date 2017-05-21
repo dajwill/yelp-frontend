@@ -1,7 +1,6 @@
 var path = require('path')
-var webpack = require('webpack')
 
-var config = {
+module.exports = {
   context: path.resolve(__dirname, './src'),
 
   entry: {
@@ -45,8 +44,3 @@ var config = {
 
   devtool: 'eval-source-map'
 }
-
-module.exports = function(env) {
-  return require(`./webpack.${env}.js`)
-}
-// module.exports = config;

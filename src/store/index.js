@@ -9,15 +9,16 @@ axios.defaults.headers.common['Authorization'] = 'Bearer eGuwe0MktbhJHGhC9kOFgU3
 
 const action$ = new Subject();
 
-const initState = () => {
-  return {
-    search: {
-      filter: '',
-      query: '',
-    },
-    listings: [],
-    favorites: []
-  }
+const initState = {
+  search: {
+    filter: 'food,bars',
+    query: '',
+    recommended: true
+  },
+  listings: [],
+  favorites: [],
+  view: 'home',
+  selected: null
 }
 
 const reducer = (state, action) => {
@@ -35,18 +36,23 @@ const reducer = (state, action) => {
         listings: action.payload
       }
     case 'UPDATE_FAVORITE':
-      // if (state.favorites.includes(action.payload)) {
-      //   let index = state.favorites.indexOf(action.payload)
-      //   state.favorites.splice(index, 1)
-      //   var newFaves = state.favorites
-      // } else {
-      //   var newFaves = state.favorites.concat(action.payload)
-      // }
-      if (!state.favorites.length) var newFaves = [ action.payload ]
-      else var newFaves = state.favorites.map(f => f === action.payload ? null : f)
+      let index = state.favorites.indexOf(action.payload)
+      index >= 0 ? state.favorites.splice(index, 1) : state.favorites.push(action.payload)
       return {
         ...state,
-        favorites: newFaves
+        favorites: state.favorites
+      }
+    case 'UPDATE_VIEW':
+      return {
+        ...state,
+        loading: false,
+        view: action.payload
+      }
+    case 'SELECT_BUSINESS':
+      return {
+        ...state,
+        view: 'business',
+        selected: action.payload
       }
     case 'ERROR':
       return {
@@ -60,7 +66,7 @@ const reducer = (state, action) => {
 }
 
 const store$ = action$
-  .startWith(initState())
+  .startWith(initState)
   .scan(reducer);
 
 const actionDispatcher = (func) => (...args) => {
@@ -74,15 +80,10 @@ const actionCreator = (func) => (...args) => {
   })
 };
 
-// const newSearch = actionDispatcher((payload) => ({
-//   type: 'UPDATE_SEARCH',
-//   payload
-// }));
-
 const newSearch = actionCreator((payload) => {
   console.log(payload);
   let { filter, query } = payload
-  return Observable.ajax(`http://localhost:8081/search?filter=${filter}&query=${query}`)
+  return Observable.ajax(`https://daj-yelp-server.herokuapp.com/search?filter=${filter}&query=${query}`)
     .map(e => e.response)
     .map(businesses => ({
       type: 'RESULTS_LOADED',
@@ -102,8 +103,20 @@ const updateLikes = actionDispatcher((payload) => ({
   payload
 }))
 
+const updateView = actionDispatcher((payload) => ({
+  type: 'UPDATE_VIEW',
+  payload
+}))
+
+const expandBusiness = actionDispatcher((payload) => ({
+  type: 'SELECT_BUSINESS',
+  payload
+}))
+
 export {
   store$,
   newSearch,
-  updateLikes
+  updateLikes,
+  updateView,
+  expandBusiness
 }
