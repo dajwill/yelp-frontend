@@ -16,7 +16,6 @@
     "google-maps": "^3.2.1",
     "riot-animate": "^0.1.0",
     "tag-loader": "^0.3.0",
-    "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
@@ -29,6 +28,7 @@
     "bulma-loader": "^1.0.1",
     "node-sass": "^4.5.2",
     "riot": "^3.4.4",
-    "rxjs": "^5.4.0"
+    "rxjs": "^5.4.0",
+    "webpack": "^2.5.1"
   }
 }
