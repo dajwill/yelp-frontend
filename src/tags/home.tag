@@ -24,7 +24,10 @@
     require('./card.tag')
 
     this.on('mount', () => {
-      newSearch(opts.search)
+      if (!opts.listings.length) {
+        console.log('loading..');
+        newSearch(opts.search)
+      }
     })
 
     this.search = this.opts.search
