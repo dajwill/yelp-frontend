@@ -5,11 +5,13 @@
   </div>
   <home if={view == 'home'} search={search} listings={listings} favorites={favorites} />
   <business if={view == 'business'} business={selected}/>
+  <likes if={view == 'likes'} likes={favorites}/>
   <footer />
 
   <script type="text/javascript">
     require('./home.tag')
     require('./business.tag')
+    require('./likes.tag')
     require('./footer.tag')
     import { store$, newSearch } from '../store'
 

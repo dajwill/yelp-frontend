@@ -23,6 +23,13 @@
   text-overflow: ellipsis;
 }
 
+/* Map */
+#map {
+  background-color: red;
+  height: 100%;
+  width: 100vw;
+}
+
 .dot {
   height: 10px;
   width: 10px;

@@ -2,10 +2,6 @@ import { Subject, Observable } from 'rxjs'
 import 'rxjs/add/operator/scan'
 import 'rxjs/add/operator/startWith'
 import 'rxjs/add/operator/catch'
-import 'rxjs/add/observable/throw'
-import axios from 'axios'
-
-axios.defaults.headers.common['Authorization'] = 'Bearer eGuwe0MktbhJHGhC9kOFgU3mC216qfQiIal1yJLIiCvQ0EbYYPRHiqQiW0qTdLqp3yY6hfpezmzGCfstpYHj673diAToRut3tVyUSfNN0-1QOYxA4qg8rLXpuLwPWXYx'
 
 const action$ = new Subject();
 
@@ -36,7 +32,8 @@ const reducer = (state, action) => {
         listings: action.payload
       }
     case 'UPDATE_FAVORITE':
-      let index = state.favorites.indexOf(action.payload)
+      let item = state.favorites.find(fave => fave.id === action.payload.id)
+      let index = state.favorites.indexOf(item)
       index >= 0 ? state.favorites.splice(index, 1) : state.favorites.push(action.payload)
       return {
         ...state,
@@ -81,7 +78,6 @@ const actionCreator = (func) => (...args) => {
 };
 
 const newSearch = actionCreator((payload) => {
-  console.log(payload);
   let { filter, query } = payload
   return Observable.ajax(`https://daj-yelp-server.herokuapp.com/search?filter=${filter}&query=${query}`)
     .map(e => e.response)

@@ -13,6 +13,7 @@
     "babel-preset-es2015": "^6.24.1",
     "cors": "^2.8.3",
     "express": "^4.15.2",
+    "google-maps": "^3.2.1",
     "riot-animate": "^0.1.0",
     "tag-loader": "^0.3.0",
     "uglify-es": "^3.0.10",
@@ -20,7 +21,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "dev": "webpack-dev-server --env=dev --progress --profile --colors",
+    "dev": "webpack-dev-server --env=dev",
     "prod": "webpack --env=prod --progress --profile --colors"
   },
   "dependencies": {
