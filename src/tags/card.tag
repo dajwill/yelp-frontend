@@ -12,27 +12,21 @@
       </figure>
     </div>
     <div class="card-content" style="font-size:1rem;">
-      <div class="columns is-mobile">
-        <div class="column is-half business-name">
-          {opts.item.name}
-        </div>
-        <div class="column">
-          <rating score="{opts.item.rating}" />
-        </div>
-        <div class="column">
-          <span class="is-pulled-right">{miles(opts.item.distance)} mi</span>
+      <div class="media">
+        <div class="media-content" style="display:flex;justify-content:space-between;">
+          <span style="align-self:center;padding:5px 0;">
+            <span class="title is-5 business-name">{opts.item.name}</span>
+            <rating style="display:inline-block;padding:0 5px;" score="{opts.item.rating}" />
+          </span>
+          <span class="" style="align-self:center;justify-content:flex-end;">{miles(opts.item.distance)} mi</span>
         </div>
       </div>
-      <div class="columns is-mobile">
-        <div class="column is-third business-type">
+      <div class="content" style="display:flex;justify-content:space-between;">
+        <span class="business-type" style="flex-basis:50%;">
           {opts.item.categories[0].title}
-        </div>
-        <div class="column">
-          <span class="is-pulled-right" if={!opts.item.is_closed}>Open Now</span>
-        </div>
-        <div class="column">
-          <span class="is-pulled-right">{opts.item.price}</span>
-        </div>
+        </span>
+        <span if={!opts.item.is_closed}>Open Now</span>
+        <span>{opts.item.price}</span>
       </div>
     </div>
   </div>

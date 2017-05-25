@@ -1,8 +1,8 @@
 <home>
-  <nav class="panel" style="position:fixed;background-color:white;z-index:10;width:100vw;">
+  <nav class="panel top-nav">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-large" type="text" placeholder="Search" onkeyup={submit} onchange={updateSearch} value="{search.query}">
+        <input class="input is-medium search-box" type="text" placeholder="Search" onkeyup={submit} onchange={updateSearch} value="{search.query}">
         <span class="icon is-small is-left">
           <i class="fa fa-search" style="color:#E4BA8E;font-size:1.5rem;"></i>
         </span>
@@ -11,10 +11,10 @@
     <div class="panel-block" each={option in panelOptions} onclick="{updateFilter(option.value)}">
       <h1>{option.label}</h1>
     </div>
-
   </nav>
-  <div class="list" style="z-index:-10;padding-top:250px;padding-bottom:40px;">
-    <div each={opts.listings}>
+
+  <div class="list columns" style="z-index:-10;padding-top:260px;padding-bottom:40px;overflow:scroll;">
+    <div each={opts.listings} class="column is-one-third">
       <card item={this} liked={liked(this.id)} onclick="{expand}"/>
     </div>
   </div>
@@ -67,17 +67,4 @@
       }
     }
   </script>
-
-  <style scoped>
-    .red { color: yellow !important; }
-    .dot {
-      height: 15px;
-      width: 15px;
-      background-color: grey;
-      border-radius: 100%;
-      margin: 2px;
-    }
-
-    .rating { display: block; }
-  </style>
 </home>

@@ -1,12 +1,46 @@
+.top-nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color:white;
+  z-index:10;
+  width:100vw;
+  border: none;
+}
+
+.search-box {
+  border: none;
+  box-shadow: none;
+}
+
+.bottom-nav {
+  position:fixed;
+  bottom:0;
+  left: 0;
+  right: 0;
+  background-color:white;
+  z-index:10;
+  width:100vw;
+}
+
+body {
+  overflow: hidden;
+}
+
+.column { padding: 0 .75rem; }
+
 .card.item {
   margin:10px;
   box-shadow: none;
-  max-height: 420px;
 }
 
 .card.item .card-content .columns.is-mobile {
   align-items: center;
-  max-height: 420px;
+}
+
+.card-content{
+  padding: 1rem;
 }
 
 /*.columns.is-mobile { margin: 0px }*/
@@ -14,7 +48,6 @@
 
 .favorite {
   color: red;
-  /*position: fixed;*/
 }
 
 .business-name, .business-type {
@@ -23,6 +56,8 @@
   text-overflow: ellipsis;
 }
 
+.business-name.title { margin-bottom: .5rem; }
+
 /* Map */
 #map {
   background-color: red;
@@ -30,44 +65,48 @@
   width: 100vw;
 }
 
+.distance {
+  font-size: .75rem;
+}
+
 .dot {
-  height: 10px;
-  width: 10px;
+  height: 8px;
+  width: 8px;
   background-color: grey;
   border-radius: 100%;
-  margin: 2px;
+  margin: 1px;
 }
 
 .rating { display: flex; }
 
 .rating-1 div:nth-child(-n+1){
-  background-color: yellow;
+  background-color: #E4BA8E;
 }
 
 .rating-2 div:nth-child(-n+2){
-  background-color: yellow;
+  background-color: #E4BA8E;
 }
 
 .rating-3 div:nth-child(-n+3){
-  background-color: yellow;
+  background-color: #E4BA8E;
 }
 
 .rating-4 div:nth-child(-n+4){
-  background-color: yellow;
+  background-color: #E4BA8E;
 }
 
 .rating-5 div:nth-child(-n+5){
-  background-color: yellow;
+  background-color: #E4BA8E;
 }
 
 /*
   Spinner
 */
-.loader {
+/*.loader {
   z-index: 99;
   height: 100vh;
   width: 100vh;
-}
+}*/
 
 .spinner {
   z-index: 99;

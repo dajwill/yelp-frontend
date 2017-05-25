@@ -5,12 +5,15 @@
       <p class="business-name">{opts.business.name}</p>
     </div>
 
-    <card item={opts.business}/>
-
-    <map coords={opts.business.coordinates} />
-    map
 
   </nav>
+
+  <div style="padding-top:60px;">
+
+  </div>
+  <card item={opts.business} />
+
+  <map coords={opts.business.coordinates} />
   <script type="text/javascript">
     import { updateView } from '../store'
     require('./map.tag')
