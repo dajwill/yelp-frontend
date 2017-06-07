@@ -14,6 +14,11 @@
   box-shadow: none;
 }
 
+.fa.fa-search {
+  color:#E4BA8E;
+  font-size:1.5rem;
+}
+
 .bottom-nav {
   position:fixed;
   bottom:0;
@@ -26,6 +31,13 @@
 
 body {
   overflow: hidden;
+}
+
+.result-list {
+  z-index:-10;
+  padding-top:260px;
+  padding-bottom:40px;
+  overflow: scroll;
 }
 
 .column { padding: 0 .75rem; }

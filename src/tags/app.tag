@@ -22,6 +22,8 @@
     ]
     var self = this
 
+    this.liked = (id) => this.favorites.filter(item => item.id === id).length
+
     store$.subscribe((state) => {
       console.log('state', state);
       this.update(state)

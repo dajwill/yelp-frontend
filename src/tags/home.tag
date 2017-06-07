@@ -4,7 +4,7 @@
       <p class="control has-icons-left">
         <input class="input is-medium search-box" type="text" placeholder="Search" onkeyup={submit} onchange={updateSearch} value="{search.query}">
         <span class="icon is-small is-left">
-          <i class="fa fa-search" style="color:#E4BA8E;font-size:1.5rem;"></i>
+          <i class="fa fa-search"></i>
         </span>
       </p>
     </div>
@@ -13,9 +13,11 @@
     </div>
   </nav>
 
-  <div class="list columns" style="z-index:-10;padding-top:260px;padding-bottom:40px;overflow:scroll;">
-    <div each={opts.listings} class="column is-one-third">
-      <card item={this} liked={liked(this.id)} onclick="{expand}"/>
+  <div class="result-list">
+    <div class="list columns">
+      <div each={opts.listings} class="column is-one-third">
+        <card item={this} liked={liked(this.id)} onclick="{expand}"/>
+      </div>
     </div>
   </div>
 
