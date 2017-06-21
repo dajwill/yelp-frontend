@@ -34,7 +34,9 @@ const reducer = (state, action) => {
     case 'UPDATE_FAVORITE':
       let item = state.favorites.find(fave => fave.id === action.payload.id)
       let index = state.favorites.indexOf(item)
+
       index >= 0 ? state.favorites.splice(index, 1) : state.favorites.push(action.payload)
+
       return {
         ...state,
         favorites: state.favorites

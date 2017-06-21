@@ -4,7 +4,7 @@
     <div class="double-bounce2"></div>
   </div>
   <home if={view == 'home'} search={search} listings={listings} favorites={favorites} />
-  <business if={view == 'business'} business={selected}/>
+  <business if={view == 'business'} business={selected} favorites={favorites}/>
   <likes if={view == 'likes'} likes={favorites}/>
   <footer />
 
@@ -27,12 +27,7 @@
     store$.subscribe((state) => {
       console.log('state', state);
       this.update(state)
+      console.log(this);
     })
   </script>
-
-  <style scoped>
-    .panel {
-      font-size: 1.4rem;
-    }
-  </style>
 </app>

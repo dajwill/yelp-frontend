@@ -2,14 +2,20 @@
   <nav class="panel top-nav">
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-medium search-box" type="text" placeholder="Search" onkeyup={submit} onchange={updateSearch} value="{search.query}">
+        <input class="input is-medium search-box"
+          type="text"
+          placeholder="Search"
+          onkeyup={submit}
+          onchange={updateSearch}
+          value="{search.query}"
+        >
         <span class="icon is-small is-left">
           <i class="fa fa-search"></i>
         </span>
       </p>
     </div>
     <div class="panel-block" each={option in panelOptions} onclick="{updateFilter(option.value)}">
-      <h1>{option.label}</h1>
+      <p class="subtitle is-4">{option.label}</p>
     </div>
   </nav>
 
@@ -50,7 +56,6 @@
 
     this.updateFilter = (value) => {
       return () => {
-        console.log(this.search);
         this.opts.search.filter = value
         newSearch(this.opts.search)
         this.update()

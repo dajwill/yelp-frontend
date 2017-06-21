@@ -1,13 +1,14 @@
 <likes>
-  <nav class="panel" style="position:fixed;background-color:white;z-index:10;width:100vw;">
+  <nav class="panel top-nav">
     <div class="panel-block">
-      <p style="margin:0 auto;">Likes</p>
+      <p class="title is-4 centered">Likes</p>
     </div>
   </nav >
 
-  <div style="padding-top:60px;">
-    <card each={opts.likes} item={this} />
-  </div>
+  <div class="padder"></div>
+
+  <card each={opts.likes} item={this} liked={true} />
+
   <script type="text/javascript">
     require('./card.tag');
   </script>
